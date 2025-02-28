@@ -1,0 +1,15 @@
+version: "3"
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "9000:9000"  # API MinIO
+      - "9090:9090"  # Console Web MinIO
+    environment:
+      MINIO_ROOT_USER: adminminio
+      MINIO_ROOT_PASSWORD: adminminio123
+    command: server /data --console-address ":9090"
+networks:
+  airflow-s-3_1625ea_airflow:
+    external: true  
